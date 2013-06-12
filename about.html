@@ -19,14 +19,6 @@
   font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
   font-weight: normal;
 }
-
-#scrollUp {
-  bottom: 20px;
-  right: 20px;
-  height: 38px;  /* Height of image */
-  width: 38px; /* Width of image */
-  background: url("assets/img/top.png") no-repeat;
-}
     </style>    
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
     
@@ -64,7 +56,7 @@
           <a class="brand" href="./index.html">SimpleCloud</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active">
+              <li class="">
                 <a href="./index.html">主页</a>
               </li>
               <li class="">
@@ -76,7 +68,7 @@
               <li class="">
                 <a href="./lab.html">实验室</a>
               </li>                          
-              <li class="">
+              <li class="active">
                 <a href="./about.html">关于</a>
               </li>
             </ul>
@@ -85,102 +77,68 @@
       </div>
     </div>
 
-<div class="jumbotron masthead">
+<header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h1>SimpleCloud</h1>
-    <p>专注于虚拟化及IaaS软件研发的自由职业者</p>
-    <p>让虚拟世界更简单</p>
-    <p>
-      <a href="mailto:simplecloud@qq.com" class="btn btn-primary btn-large" >联系我</a>
-    </p>
-    <ul class="masthead-links">
-      <li>
-        Virtualization
-      </li>
-      <li>
-        Cloud Computing
-      </li>
-    </ul>
-    
-    <ul class="masthead-links">
-      <li>
-        2011-2013
-      </li>
-    </ul>
+    <h1>关于</h1>
+    <p class="lead">SimpleCloud团队专注于虚拟化技术领域，致力于根据客户需求提供方案，解决虚拟世界的实际问题。</p>
   </div>
-</div>
+</header>
 
-<div class="bs-docs-social">
   <div class="container">
-    <ul class="bs-docs-social-buttons">
-	  <li>
-		<a href="http://weibo.com/cloudprovider" title="SimpleCloud团队微博" target="_blank"><img src="assets/img/Weibo_Logo.png" style="height: 30px;"></a>
-	  </li>
-    </ul>
-  </div>
-</div>
 
-<div class="container">
-
-  <div class="marketing">
-
-    <h1>我专注的领域</h1>
-    <p class="marketing-byline">如果您有以下技术领域的兴趣及需求，欢迎随时<a href="mailto:simplecloud@qq.com" class="btn btn-primary" >联系我</a></p>
-
-    <div class="row-fluid">
-      <div class="span4">
-        <img class="marketing-img" src="assets/img/hypervisor.png">
-        <h2>虚拟化平台</h2>
-        <p></p>
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#about-us"><i class="icon-chevron-right"></i> 关于SimpleCloud</a></li>
+          <li><a href="#about-me"><i class="icon-chevron-right"></i> 关于我</a></li>
+          <li><a href="#cooperation"><i class="icon-chevron-right"></i> 合作</a></li>
+        </ul>
       </div>
-      <div class="span4">
-        <img class="marketing-img" src="assets/img/vmsolution.png">
-        <h2>虚拟化解决方案</h2>
-        <p></p>
-      </div>
-      <div class="span4">
-        <img class="marketing-img" src="assets/img/iaascloud.png">
-        <h2>云计算应用</h2>
-        <p></p>
+      <div class="span9">
+
+        <section id="about-us">
+          <div class="page-header">
+            <h1>关于SimpleCloud</h1>
+          </div>
+          <p class="lead">&nbsp; &nbsp;SimpleCloud团队成立于2011年，最初专注于<a href="./project.html#simplecloud">SimpleCloud轻量级云计算平台</a>。
+          项目开发结束后以虚拟团队的形式承接外包项目。
+          作为团队组织者，我是唯一长期全职的成员，负责项目洽谈和客户需求分析，技术选型，以及团队管理协调，
+          当然经常也需要参与到代码开发中。其他成员根据项目需求组织，分工协作。</p>
+        </section>
+
+        <section id="about-me">
+          <div class="page-header">
+            <h1>关于我</h1>
+          </div>
+          <p class="lead">&nbsp; &nbsp;从2006年开始接触服务器虚拟化技术，承蒙各位良师前辈的指导，从此走向了这条专科道路。时间虽不短，但仍处在学习虚拟化常识的阶段。
+          一路走来，靠大大小小的项目及产品慢慢积累，刻苦钻研，乐在其中。</p>
+          <h2>个人简历</h2>
+          <p class="lead">
+          教育及工作经历：<a href="http://cn.linkedin.com/pub/lei-shi/18/11b/71b">
+          <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x33.png" width="160" height="33" border="0" alt="View Lei Shi's profile on LinkedIn">
+          </a></p>
+          <p class="lead">
+          项目经历：<a href="./project.html">我的项目</a></p>
+
+        </section>        
+
+        <section id="cooperation">
+          <div class="page-header">
+            <h1>合作</h1>
+          </div>
+          <p class="lead">&nbsp; &nbsp;我们承接一些有意思的虚拟化外包项目，根据客户需求进行虚拟化/IaaS软件定制和解决方案设计，同时提供技术咨询。欢迎任何形式的合作洽谈，项目及技术交流。</p>
+          <h3>联系方式</h3>
+          <ul>
+          <li>Mail: <a href="mailto:simplecloud@qq.com" target="_blank">simplecloud@qq.com</a></li>
+          <li><a href="http://weibo.com/cloudprovider" title="SimpleCloud团队微博" target="_blank"><img src="assets/img/Weibo_Logo.png" style="height: 30px;"></a></li>
+          </ul>
+        </section>
+
+
       </div>
     </div>
 
-    <hr class="soften">
-
-    <h1>我的项目</h1>
-    <p class="marketing-byline">挖掘用户需求，解决用户使用虚拟化过程中的痛点！更多有趣的虚拟化项目请见<a href="./project.html">项目</a></p>
-    <div class="row-fluid">
-      <ul class="thumbnails example-sites">
-        <li class="span3">
-          <a class="thumbnail" href="./project.html#simplecloud" target="_blank">
-            <img src="assets/img/simplecloud.png" alt="SimpleCloud">
-          </a>
-          <h3>SimpleCloud</h3>
-        </li>
-        <li class="span3">
-          <a class="thumbnail" href="./project.html#vbackuper" target="_blank">
-            <img src="assets/img/vbackuper.png" alt="vBackuper">
-          </a>
-          <h3>vBackuper</h3>
-        </li>
-        <li class="span3">
-          <a class="thumbnail" href="./project.html#simplesecurityapp" target="_blank">
-            <img src="assets/img/simplesecurityapp.png" alt="SimpleSecurityApp">
-          </a>
-          <h3>SimpleSecurityApp</h3>
-        </li>
-        <li class="span3">
-          <a class="thumbnail" href="./project.html#simplemonitor" target="_blank">
-            <img src="assets/img/simplemonitor.png" alt="SimpleMonitor">
-          </a>
-          <h3>SimpleMonitor</h3>
-        </li>
-      </ul>
-     </div>
-
   </div>
-
-</div>
 
 
 
@@ -223,6 +181,5 @@
     <script src="assets/js/google-code-prettify/prettify.js"></script>
 
     <script src="assets/js/application.js"></script>
-
   </body>
 </html>
