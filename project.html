@@ -123,14 +123,165 @@
         ================================================== -->
         <section id="vbackuper">
           <div class="page-header">
-            <h1>vBackuper（进行中）</h1>
+            <h1>vBackuper</h1>
           </div>
           <p class="lead">虚拟机磁盘备份产品。</p>
-          <p>实现在KVM/Xen平台上针对RAW，QCOW2格式虚拟磁盘进行实时增量备份的软件。
-          支持将磁盘备份到NFS，Virtual Disk以及云端存储。部署形式是Virtual Appliance，提供Web UI，命令行，
-          Restful API三种接口。实现的基础是Libvirt API以及QEMU最新的Live Snapshot和Storage Migration技术，
-          基于镜像磁盘块的拷贝，去重，压缩，加密。同时提供任务，备份管理。</p>
-          <p>作为项目发起人，设计软件整体架构，确定技术选型，作为主要程序员负责原型的大部分代码。</p>
+          <h3>项目简介</h3>
+          <p>vBackuper提供针对虚拟化的备份解决方案。支持对运行状态的虚拟机进行全备份，增量备份。提供对备份数据的去重，压缩，加密等增值功能，增强备份效率的同时，有效保护虚拟机数据的安全。</p>
+          <p>
+          vBackuper当前版本v1.0实现了KVM/Xen平台上针对RAW，QCOW2格式虚拟磁盘进行实时增量备份的软件。 支持将磁盘备份到NFS，Virtual Disk以及云端存储。部署形式是Virtual Appliance，提供Web UI，命令行， Restful API三种接口。实现的基础是Libvirt API以及QEMU最新的Live Snapshot和Storage Migration技术， 基于镜像磁盘块的拷贝，去重，压缩，加密。同时为用户提供管理自己所有任务及虚拟机备份的方式和接口。</p>
+          <h3>功能列表</h3>
+          <ol>
+          <li><strong>虚拟应用模式，无需额外硬件</strong></li>
+          <p>vBackuper作为一个虚拟机发布，易于安装部署。</p>
+          <li><strong>快速有效的增量备份与恢复</strong></li>
+          <p>仅备份用户改变的数据快，可以进行快速的备份。</p>
+          <li><strong>简单友好的Web操作界面</strong></li>
+          <p>仅需要简单的点击一个按钮就可以进行备份和恢复。</p>
+          <li><strong>多物理主机支持</strong></li>
+          <p>可以添加多个物理主机，管理其上的虚拟机的备份与恢复。</p>
+          <li><strong>无代理模式</strong></li>
+          <p>无需安装任何代理到Hypervisor上。</p>
+          <li><strong>支持多种虚拟化平台</strong></li>
+          <p>支持KVM，未来会加入Xen，XenServer，VMware平台的支持</p>
+          <li><strong>可扩展架构</strong></li>
+          <p>为了避免一个vBackuper成为瓶颈，架构设计为多个vBackuper可以并行执行多个备份任务。</p>
+          <li><strong>多备份存储支持</strong></li>
+          <p>支持备份到NFS，虚拟磁盘，以及其他分布式文件系统。</p>
+          <li><strong>任务邮件通知</strong></li>
+          <p>可以配置管理员邮箱通知任务状态。</p>
+          <li><strong>支持KVM静止模式</strong></li>
+          <p>对于安装了QEMU-AGENT的虚拟机，支持静止模式保证备份磁盘数据的一致性。</p>
+          <li><strong>多种恢复模式</strong></li>
+          <p>支持从备份重建虚拟机，或者替代虚拟机当前的虚拟磁盘。</p>
+          <li><strong>Restful API</strong></li>
+          <p>提供API接口，易于系统集成</p>
+          <li><strong>备份数据完整性校验</strong></li>
+          <p>备份后进行校验码计算，保证数据完整性，再次恢复前进行校验。</p>
+          <li><strong>智能备份模式</strong></li>
+          <p>根据当前虚拟机备份状态智能选择全备份或增量备份模式。</p>
+          <li><strong>支持灵活的备份策略（开发中）</strong></li>
+          <p>可配置周期备份以及计划备份任务。</p>
+          <li><strong>块级别的加密去重（开发中）</strong></li>
+          <p>针对数据块进行加密和去重操作，将结果数据传输到备份存储。</p>
+          </ol>
+          <h3>界面截图</h3>
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>登录界面</h4>
+          <ul>
+          <li>登录vBackuper虚拟备份管理系统</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/login.png" target="_blank">
+            <img src="assets/img/screenshot/login.png" alt="login">
+            </a>
+          </li>
+          </ul>
+          </div>
+          
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>主面板</h4>
+          <ul>
+          <li>包含备份存储，虚拟机，任务以及备份的信息</li>
+          <li>提供了主要功能的快捷方式</li>
+          <li>展示当前运行的任务状态</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/dashboard.png" target="_blank">
+            <img src="assets/img/screenshot/dashboard.png" alt="dashboard">
+            </a>
+          </li>
+          </ul>
+          </div>
+          
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>系统配置</h4>
+          <ul>
+          <li>配置管理员信息与产品序列号</li>
+          <li>修改备份存储信息（NFS或虚拟磁盘）</li>
+          <li>添加和删除物理服务器</li>
+          <li>设置存储策略</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/config.png" target="_blank">
+            <img src="assets/img/screenshot/config.png" alt="config">
+            </a>
+          </li>
+          </ul>
+          </div>
+          
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>虚拟机备份与恢复管理</h4>
+          <ul>
+          <li>展示所有管理的虚拟机信息</li>
+          <li>提供每个虚拟机的备份与恢复接口</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/vm.png" target="_blank">
+            <img src="assets/img/screenshot/vm.png" alt="vm">
+            </a>
+          </li>
+          </ul>
+          </div>
+
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>任务管理</h4>
+          <ul>
+          <li>任务状态查看</li>
+          <li>任务运行队列管理</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/job.png" target="_blank">
+            <img src="assets/img/screenshot/job.png" alt="job">
+            </a>
+          </li>
+          </ul>
+          </div>
+          
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>备份管理</h4>
+          <ul>
+          <li>备份状态查看</li>
+          <li>由备份恢复虚拟机或创建新虚拟机</li>
+          <li>过期备份删除</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/backup.png" target="_blank">
+            <img src="assets/img/screenshot/backup.png" alt="backup">
+            </a>
+          </li>
+          </ul>
+          </div>
+                    
+          <h3>安装方法</h3>
+          <ol>
+          <li> 部署vBackuper虚拟机到物理服务器上 </li>
+          <li>配置vBackuper虚拟机网络 </li>
+          <li>启动vBackuper虚拟机 </li>
+          <li>登陆http://vBackuper_VM_IP:7775，使用默认密码登入后进行简单配置（管理员邮箱，密码，备份存储）</li>
+          <li>添加需要管理的物理服务器 </li>
+          <li>完成基本配置后即可以查看虚拟机并进行备份和恢复</li>
+          </ol>
+          <h3>研发进度</h3>
+          <p>1.0 Beta版代码开发完成，进入测试阶段</p>
         </section>
         
         <!-- vNetworker
