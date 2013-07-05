@@ -100,12 +100,12 @@
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#vbackuper"><i class="icon-chevron-right"></i> vBackuper</a></li>
+          <li><a href="#simplecloud"><i class="icon-chevron-right"></i> SimpleCloud 轻量级云计算平台</a></li>
           <li><a href="#vnetworker"><i class="icon-chevron-right"></i> vNetworker</a></li>                 
           <li><a href="#ezcloudiaas"><i class="icon-chevron-right"></i> ezCloud IaaS 云平台</a></li>
           <li><a href="#iaasstorage"><i class="icon-chevron-right"></i> IaaS 云平台存储架构研究</a></li>
           <li><a href="#pcivirtual"><i class="icon-chevron-right"></i> PCI硬件设备虚拟化</a></li>
           <li><a href="#sdnnet"><i class="icon-chevron-right"></i> 基于OpenFlow/SDN/OpenvSwitch的虚拟网络管理</a></li>
-          <li><a href="#simplecloud"><i class="icon-chevron-right"></i> SimpleCloud 轻量级云计算平台</a></li>
           <li><a href="#simplesecurityapp"><i class="icon-chevron-right"></i> SimpleSecurityApp</a></li>
           <li><a href="#esxclinet"><i class="icon-chevron-right"></i> vSphere ESXCLI network管理模块</a></li>
           <li><a href="#esxifirewall"><i class="icon-chevron-right"></i> vSphere ESXi Firewall</a></li>
@@ -126,28 +126,25 @@
             <h1>vBackuper</h1>
           </div>
           <p class="lead">虚拟机磁盘备份产品。</p>
+
           <h3>项目简介</h3>
           <p>vBackuper提供针对虚拟化的备份解决方案。支持对运行状态的虚拟机进行全备份，增量备份。提供对备份数据的去重，压缩，加密等增值功能，增强备份效率的同时，有效保护虚拟机数据的安全。</p>
           <p>
-          vBackuper当前版本v1.0实现了KVM/Xen平台上针对RAW，QCOW2格式虚拟磁盘进行实时增量备份的软件。 支持将磁盘备份到NFS，Virtual Disk以及云端存储。部署形式是Virtual Appliance，提供Web UI，命令行， Restful API三种接口。实现的基础是Libvirt API以及QEMU最新的Live Snapshot和Storage Migration技术， 基于镜像磁盘块的拷贝，去重，压缩，加密。同时为用户提供管理自己所有任务及虚拟机备份的方式和接口。</p>
+          vBackuper当前版本v1.0实现了KVM平台上针对RAW，QCOW2格式虚拟磁盘进行实时增量备份的软件。支持将磁盘备份到NFS，Virtual Disk。部署形式是Virtual Appliance，提供Web UI，命令行， Restful API三种接口。为用户提供管理自己所有任务及虚拟机备份的界面。</p>
           <h3>功能列表</h3>
           <ol>
           <li><strong>虚拟应用模式，无需额外硬件</strong></li>
-          <p>vBackuper作为一个虚拟机发布，易于安装部署。</p>
+          <p>vBackuper作为一个虚拟机发布，无需hypervisor安装任何代理，易于安装部署。</p>
           <li><strong>快速有效的增量备份与恢复</strong></li>
           <p>仅备份用户改变的数据快，可以进行快速的备份。</p>
           <li><strong>简单友好的Web操作界面</strong></li>
           <p>仅需要简单的点击一个按钮就可以进行备份和恢复。</p>
-          <li><strong>多物理主机支持</strong></li>
-          <p>可以添加多个物理主机，管理其上的虚拟机的备份与恢复。</p>
-          <li><strong>无代理模式</strong></li>
-          <p>无需安装任何代理到Hypervisor上。</p>
-          <li><strong>支持多种虚拟化平台</strong></li>
-          <p>支持KVM，未来会加入Xen，XenServer，VMware平台的支持</p>
           <li><strong>可扩展架构</strong></li>
           <p>为了避免一个vBackuper成为瓶颈，架构设计为多个vBackuper可以并行执行多个备份任务。</p>
           <li><strong>多备份存储支持</strong></li>
           <p>支持备份到NFS，虚拟磁盘，以及其他分布式文件系统。</p>
+          <li><strong>智能备份模式</strong></li>
+          <p>根据当前虚拟机备份状态智能选择全备份或增量备份模式。</p>
           <li><strong>任务邮件通知</strong></li>
           <p>可以配置管理员邮箱通知任务状态。</p>
           <li><strong>支持KVM静止模式</strong></li>
@@ -156,14 +153,15 @@
           <p>支持从备份重建虚拟机，或者替代虚拟机当前的虚拟磁盘。</p>
           <li><strong>Restful API</strong></li>
           <p>提供API接口，易于系统集成</p>
-          <li><strong>备份数据完整性校验</strong></li>
-          <p>备份后进行校验码计算，保证数据完整性，再次恢复前进行校验。</p>
-          <li><strong>智能备份模式</strong></li>
-          <p>根据当前虚拟机备份状态智能选择全备份或增量备份模式。</p>
+          <li><strong>支持多种虚拟化平台（开发中）</strong></li>
+          <p>支持KVM，未来会加入Xen，XenServer，VMware平台的支持</p>
           <li><strong>支持灵活的备份策略（开发中）</strong></li>
           <p>可配置周期备份以及计划备份任务。</p>
           <li><strong>块级别的加密去重（开发中）</strong></li>
           <p>针对数据块进行加密和去重操作，将结果数据传输到备份存储。</p>
+          <li><strong>多物理主机支持（开发中）</strong></li>
+          <p>可以添加多个物理主机，管理其上的虚拟机的备份与恢复。</p>
+          
           </ol>
           <h3>界面截图</h3>
           <div class="row-fluid">
@@ -283,6 +281,110 @@
           <h3>研发进度</h3>
           <p>1.0 Beta版代码开发完成，进入测试阶段</p>
         </section>
+
+        <!-- SimpleCloud
+        ================================================== -->
+        <section id="simplecloud">
+          <div class="page-header">
+            <h1>SimpleCloud 轻量级云计算平台</h1>
+          </div>
+          <p class="lead">IaaS云计算平台</p>
+          <h3>项目简介</h3>
+          <p>SimpleCloud云计算平台是基于虚拟化的云计算管理软件，为企业IT环境构建私有云，
+          以弹性的方式管理物理资源和虚拟资源，提高服务器利用率，降低IT部署和管理成本。
+          主要的特点是易用（安装，部署和使用），智能，自动化，稳定，安全，易定制集成。
+          同时也具有一般私有云平台的动态性，弹性扩展，基于策略，多虚拟化平台支持等优点，
+          可以在企业普通的硬件及网络环境中构建动态的可扩展的虚拟化云计算平台。
+          国外类似的商业和开源产品很多，例如CloudStack，OpenStack，Eucayptus，Enomaly, OpenNebula, OpenQRM 等，
+          以及Microsoft，HP，IBM，RedHat，VMware等巨头提供的私有云解决方案。
+          </p>
+          <p>SimpleCloud系列产品包括云平台和云应用两大部分，云平台即SimpleCloud云计算平台，云应用包括云安全（SimpleSecurityApp），
+          云迁移（SimpleGoCloud）两个关键应用，计划基于SimpleCloud平台添加更多的IaaS层面的云应用，
+          一些优秀的云应用未来将作为独立的产品发布，用以支持其他的云平台。
+          用户界面方面，目前提供完整的命令行接口SimpleCLI，详细介绍请见<a href="http://blog.sina.com.cn/s/blog_89b3ebee0100u83b.html">SimpleCloud项目介绍</a>。</p>
+          <h3>产品特点</h3>
+          <ul>
+          <li><h4>易用</h4></li>
+          <p><strong>易于部署</strong>：SimpleCloud设计上简化了安装部署以及云环境的使用和管理逻辑，提供更直观的虚拟资源管理方式，
+          绝大部分的云资源的管理都将实现自动化和基于策略的管理。
+          云管理员可以轻松地按照简单的步骤在企业内部部署自己的私有云，终端用户可以按需申请资源，资源对象的组织更接近于实际的物理环境。</p>
+          
+          <p><strong>友好的用户接口</strong>：SimpleCloud提供强大的API并在此之上提供丰富的用户接口，包括远程命令行接口和Web界面。
+          命令行工具可以应用在部署脚本中，进行自动化的云管理。为基于虚拟化平台的云计算环境提供的Web管理界面，
+          目前基于SimpleCloud的python API编写，未来发展目标将会独立出来支持对其他私有云平台甚至公有云的连接。
+          从而为用户管理公有云与私有云资源提供统一的界面和体验模式。</p>
+
+          <li><h4>智能</h4></li>
+          <p><strong>自动化设计</strong>：SimpleCloud的智能体现在更多的自动化设计。首先识别不同的虚拟化平台，并选择为其提供不同的处理模块；
+          其次虚拟机和物理机器同时提供PXE网卡启动的支持，可以直接将裸机加入到私有云环境中并自动检测，安装和启动成一个计算节点，
+          在私有云扩展的过程中，客户需要做的仅仅是告诉云平台新加入的物理机器的网卡MAC；
+          再次，SimpleCloud可以根据客户的硬件环境匹配最优的管理策略，并提供相应的接口供客户调整默认策略。</p>
+          
+          <li><h4>稳定</h4></li>
+          <p><strong>轻量级</strong>：SimpleCloud作为轻量级的私有云环境，一切设计上的考虑都以稳定性为基础。SimpleCloud专为企业私有云以及中小规模的IDC服务提供商设计，单个云平台仅部署中小规模的物理环境中（少于100台主机）。但是，SimpleCloud有计划在发展到一定阶段进行相应的扩展，支持更大规模的云环境部署。</p>
+          <p><strong>模块化</strong>：简化核心部分逻辑，以模块化方式包含云平台部署的关键功能，并且各个模块之间尽量独立，保持稳定性设计的同时为云平台的快速定制提供了基础。</p>
+          <p><strong>插件模式</strong>：平台提供插件模式供新的功能扩展和集成，将可能出现问题的区域隔离到相应的功能插件内，目前SimpleSecurityApp已经以插件的形式集成到SimpleCloud中。</p>
+          
+          <li><h4>安全</h4></li>
+          <p><strong>访问控制</strong>：SimpleCloud内部实现了基于身份的访问控制，提供了两种身份用户：云平台管理员和云平台标准用户。并且内部实现了一个用户权限管理的子系统，也将支持与主流的用户授权框架集成，对所有的API以及资源访问进行严格的访问控制。</p>
+          <p><strong>API安全</strong>：SimpleCloud提供的API 接口支持SSL加密，具有一定安全保证。</p>
+          <p><strong>集成SimpleSecurityApp</strong>集成SimpleSecurityApp：由于与SimpleSecurityApp云安全应用的集成，SimpleCloud具有了为每个虚拟主机提供单独的安全服务例如外围防火墙的功能。目前，SimpleSecurityApp原型仅运行在SimpleCloud，但是设计上完全独立，可以单独出来作为产品集成到其他云平台中。SimpleSecurityApp也被设计成插件框架，可以很容易的为其加入新的安全服务，目前原型中仅仅实现了防火墙安全服务。</p>
+          <li><h4>集成与定制</h4></li>
+          <p><strong>丰富的API</strong>：SimpleCloud提供丰富的API接口，目前版本并不与Amazon EC2兼容，对系统集成友好，系统目前提供支持多种语言的SDK，包括C++，Java，Python，Perl等。提供的API以虚拟资源类型进行组织，更易于用户理解和与业务系统的集成。</p>
+          <p><strong>插件模式</strong>：平台内部提供了插件框架，支持在SimpleCloud内部加入新的功能，为扩展开发提供了便利。</p>
+          </ul>
+          <h3>产品定位</h3>
+          <p>SimpleCloud定位于企业私有云，为企业提供简单，智能，安全，稳定的私有云平台及友好的集成定制接口，搭建企业迈入云计算的桥梁。 在SimpleCloud完全产品化之后，通过部署SimpleCloud私有云环境，企业客户可以获得的价值包括但不限于下列描述：</p>
+          <ul>
+          <li>轻量级的云平台</li>
+          <li>简单的按需部署自服务模式</li>
+          <li>快速的安装和设置</li>
+          <li>模块化和插件框架的系统设计易于定制和集成</li>
+          <li>物理资源的充分利用和整合</li>
+          <li>灵活的弹性虚拟资源管理</li>
+          <li>智能迅速的虚拟环境部署和资源生命周期管理</li>
+          <li>更好的应用程序的备份和数据安全管理</li>
+          <li>安全的支持多种语言的API </li>
+          <li>保证服务的高可用性</li>
+          <li>更低的IT基础设施构建和管理成本</li>
+          <li>提高企业内部IT业务流程的管理效率</li>
+          <li>其他通用私有云环境的优势</li>
+          </ul>
+          
+          <h3>功能列表</h3>
+          <ul>
+          <li>用户管理</li>
+          <li>虚拟机管理</li>
+          <li>物理主机管理</li>
+          <li>虚拟机镜像管理</li>
+          <li>策略管理</li>
+          <li>虚拟机模板管理</li>
+          <li>任务管理</li>
+          <li>系统管理</li>
+          <li>客户端</li>
+          <li>API和集成</li>
+          <li>网络管理</li>
+          <li>存储管理</li>
+          </ul>
+
+          <h3>应用场景</h3>
+          <ul>
+          <li>构建按需部署的，弹性的可扩展的虚拟数据中心</li>
+          <li>VPS和数据中心托管</li>
+          <li>SaaS服务的后端框架和集成</li>
+          <li>PaaS服务的后端框架和集成</li>
+          <li>大数据处理</li>
+          <li>按需处理峰值运算时的工作量</li>
+          <li>开发测试云环境</li>
+          <li>教育环境</li>
+          <li>内部SaaS集成：ERP，CRM，email</li>
+          <li>数据和环境备份</li>
+          <li>为应用提供云数据库后端</li>
+          <li>资源共享和演示</li>
+          <li>物理主机的整合</li>
+          </ul>
+          
+        </section>
         
         <!-- vNetworker
         ================================================== -->
@@ -338,20 +440,7 @@
           <p class="lead">基于SDN技术实现IaaS云计算平台上的二层网络隔离，以及流量控制。</p>
         </section>
         
-        <!-- SimpleCloud
-        ================================================== -->
-        <section id="simplecloud">
-          <div class="page-header">
-            <h1>SimpleCloud 轻量级云计算平台</h1>
-          </div>
-          <p class="lead">IaaS云计算平台</p>
-          <p>SimpleCloud项目提供基于虚拟化技术的私有云平台和相关的云应用，目标是通过部署企业私有云平台，
-          帮助企业灵活高效的管理IT资源，提高服务器利用率，降低IT部署和管理成本。
-          SimpleCloud系列产品包括云平台和云应用两大部分，云平台即SimpleCloud云计算平台，云应用包括云安全（SimpleSecurityApp），
-          云迁移（SimpleGoCloud）两个关键应用，计划基于SimpleCloud平台添加更多的IaaS层面的云应用，
-          一些优秀的云应用未来将作为独立的产品发布，用以支持其他的云平台。
-          用户界面方面，目前提供完整的命令行接口SimpleCLI，详细介绍请见<a href="http://blog.sina.com.cn/s/blog_89b3ebee0100ua6i.html">SimpleCloud项目介绍</a>。</p>
-        </section>
+
 
         <!-- SimpleSecurityApp
         ================================================== -->
