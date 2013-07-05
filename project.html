@@ -131,14 +131,21 @@
           <p>vBackuper提供针对虚拟化的备份解决方案。支持对运行状态的虚拟机进行全备份，增量备份。提供对备份数据的去重，压缩，加密等增值功能，增强备份效率的同时，有效保护虚拟机数据的安全。</p>
           <p>
           vBackuper当前版本v1.0实现了KVM平台上针对RAW，QCOW2格式虚拟磁盘进行实时增量备份的软件。支持将磁盘备份到NFS，Virtual Disk。部署形式是Virtual Appliance，提供Web UI，命令行， Restful API三种接口。为用户提供管理自己所有任务及虚拟机备份的界面。</p>
+          
           <h3>功能列表</h3>
+          <h4>核心功能</h4>
+          <ul>
+          <li><strong>动态增量备份与恢复</strong></li>
+          <p>虚拟机运行时备份，无需停机。仅备份用户改变的数据快，实现快速备份。</p>
+          <li><strong>简单易用的Web操作界面</strong></li>
+          <p>仅需要简单的点击一个按钮就可以进行虚拟机备份和恢复。具体可见 <strong>界面截图</strong>。</p>
+          <li><strong>多站点间虚拟机灾备解决方案</strong></li>
+          <p>配置多个vBackuper实例在不同站点，通过vBackuper的合作实现多站点间的虚拟数据中心灾备，迁移和复制。</p>
+          </ul>          
+          <h4>其他功能</h4>
           <ol>
           <li><strong>虚拟应用模式，无需额外硬件</strong></li>
           <p>vBackuper作为一个虚拟机发布，无需hypervisor安装任何代理，易于安装部署。</p>
-          <li><strong>快速有效的增量备份与恢复</strong></li>
-          <p>仅备份用户改变的数据快，可以进行快速的备份。</p>
-          <li><strong>简单友好的Web操作界面</strong></li>
-          <p>仅需要简单的点击一个按钮就可以进行备份和恢复。</p>
           <li><strong>可扩展架构</strong></li>
           <p>为了避免一个vBackuper成为瓶颈，架构设计为多个vBackuper可以并行执行多个备份任务。</p>
           <li><strong>多备份存储支持</strong></li>
@@ -161,7 +168,6 @@
           <p>针对数据块进行加密和去重操作，将结果数据传输到备份存储。</p>
           <li><strong>多物理主机支持（开发中）</strong></li>
           <p>可以添加多个物理主机，管理其上的虚拟机的备份与恢复。</p>
-          
           </ol>
           <h3>界面截图</h3>
           <div class="row-fluid">
