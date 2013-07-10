@@ -398,22 +398,61 @@
           <div class="page-header">
             <h1>vNetworker</h1>
           </div>
-          <p class="lead">基于SDN的虚拟网络安全管理。</p>
+          <p class="lead">基于SDN的虚拟网络安全管理软件。</p>
+          <h3>项目简介</h3>
           <p>
           该系统目的是构建一个基于OpenFlow的可扩展的云环境安全服务平台。
           初期目标是IaaS环境下的虚拟网络安全管理，未来有可能扩展到更广泛的安全领域。</p>
           <p>作为项目发起人，设计软件整体架构，确定技术选型，作为主要程序员负责原型的大部分代码。</p>
+          
+          <h3>功能列表</h3>
+          <ul>
+          <li>虚拟网络安全管理基础平台</li>
+          <p>提供一个安全管理的框架，部署在虚拟化环境里。提供必要的接口供用户定制开发新的虚拟网络安全组件。</p>
+          
+          <li>安全策略动态部署</li>
+          <p>根据网络包的信息按需动态部署安全策略，设定超时后需虚拟交换机再次访问openflow controller才可以获取安全策略。</p>
+          
+          <li>支持虚拟机迁移</li>
+          <p>安全策略绑定虚拟机对象，虚拟机迁移不影响安全策略实施。</p>
+          
+          <li>架构模块化</li>
+          <p>分为Control Center，openflow Controller，vNetworker Agent三个模块，模块间松耦合，以RestFul API进行通信。</p>
+          
+          <li>安全服务插件式</li>
+          <p>基于三个模块中提供的API，支持快速开发新的安全服务的插件架构。无需重启系统即可添加新的安全服务及更新安全策略。</p>
+          
+          <li>支持的安全服务</li>
+          <ol>
+          <li>虚拟机安全组（已完成）</li>
+          <li>虚拟防火墙（已完成）</li>
+          <li>虚拟网络流量分析（开发中）</li>
+          </ol>
+          
+          <li>命令行管理工具</li>
+          <p>提供命令行node-cmd, object-cmd, service-cmd, policy-cmd管理安全服务，安全策略及其保护的目标和载体。</p>
+          </ul>
+          
+          <h3>项目文档（待更新）</h3>
+          <ul>
+          <li>vNetworker v1.0 API 文档</li>
+          <li>vNetworker v1.0 CLI 命令行文档</li>
+          <li>vNetworker v1.0 安全服务开发文档</li>
+          <li>vNetworker v1.0 使用手册</li>
+          <li>vNetworker v1.0 系统设计文档</li>
+          </ul>
+          
         </section>
         
         <!-- ezcloudiaas
         ================================================== -->
         <section id="ezcloudiaas">
           <div class="page-header">
-            <h1>ezCloud IaaS 云平台</h1>
+            <h1>ezCloud IaaS云平台</h1>
           </div>
           <p class="lead">基础架构即服务（IaaS）软件。</p>
           <p>公司核心产品，私有云IaaS平台。提供虚拟机，虚拟网络及虚拟存储的管理。</p>
-          <p>我负责管理研发团队，制定研发计划和技术方案，负责私有云产品整体设计及私有云产品后台功能开发。</p>
+          <p>负责研发团队管理，制定研发计划和技术方案，负责私有云产品整体设计及私有云产品后台功能开发。</p>
         </section>
 
         <!-- iaasstorage
