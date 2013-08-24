@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SimpleCloud 虚拟化实验室</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="SimpleCloud">
+    <meta name="keywords" content="SimpleCloud,虚拟化,云计算,IaaS,Xen,KVM,VMware,SDN,虚拟网络">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstraped.css" rel="stylesheet">
+    <link href="assets/css/bootstraped-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <style>
+    h1, h2, h3, .masthead p, .subhead p, .marketing h2, .lead
+{
+  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
+  font-weight: normal;
+}
+
+#scrollUp {
+  bottom: 20px;
+  right: 20px;
+  height: 38px;  /* Height of image */
+  width: 38px; /* Width of image */
+  background: url("assets/img/top.png") no-repeat;
+}
+    </style>    
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    
+    <!--[if IE 7]>
+      <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+    <![endif]-->
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">SimpleCloud</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">主页</a>
+              </li>
+              <li class="active">
+                <a href="./project.html">项目</a>
+              </li>
+              <li class="">
+                <a href="http://blog.sina.com.cn/simplecloud">博客</a>
+              </li>             
+              <li class="">
+                <a href="./lab.html">实验室</a>
+              </li>                          
+              <li class="">
+                <a href="./about.html">关于</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<header class="jumbotron subhead" id="overview">
+  <div class="container">
+    <h1>项目</h1>
+    <p class="lead">展示我参与设计开发的若干项目，客户定制项目出于保密原则未列出。</p>
+  </div>
+</header>
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#simplecloudos"><i class="icon-chevron-right"></i> SimpleCloud 开源IaaS软件（进行中）</a></li>
+          <li><a href="#vbackuper"><i class="icon-chevron-right"></i> vBackuper（进行中）</a></li>
+          <li><a href="#simplecloud"><i class="icon-chevron-right"></i> SimpleCloud 轻量级云计算平台</a></li>
+          <li><a href="#vnetworker"><i class="icon-chevron-right"></i> vNetworker</a></li>
+          <li><a href="#ezcloudiaas"><i class="icon-chevron-right"></i> ezCloud IaaS 云平台</a></li>
+          <li><a href="#iaasstorage"><i class="icon-chevron-right"></i> IaaS 云平台存储架构研究</a></li>
+          <li><a href="#pcivirtual"><i class="icon-chevron-right"></i> PCI硬件设备虚拟化</a></li>
+          <li><a href="#sdnnet"><i class="icon-chevron-right"></i> 基于OpenFlow/SDN/OpenvSwitch的虚拟网络管理</a></li>
+          <li><a href="#simplesecurityapp"><i class="icon-chevron-right"></i> SimpleSecurityApp</a></li>
+          <li><a href="#esxclinet"><i class="icon-chevron-right"></i> vSphere ESXCLI network管理模块</a></li>
+          <li><a href="#esxifirewall"><i class="icon-chevron-right"></i> vSphere ESXi Firewall</a></li>
+          <li><a href="#vdspowercli"><i class="icon-chevron-right"></i> vDS PowerCLI 管理工具</a></li>
+          <li><a href="#vnetworkapi"><i class="icon-chevron-right"></i> vSphere vNetwork API POC项目</a></li>
+          <li><a href="#simplemonitor"><i class="icon-chevron-right"></i> SimpleMonitor</a></li>          
+          <li><a href="#privatestorage"><i class="icon-chevron-right"></i>  私有存储云安全研究</a></li>
+          <li><a href="#cloudsafe"><i class="icon-chevron-right"></i>  基于虚拟架构的云安全体系结构研究</a></li>
+          <li><a href="#linuxvirus"><i class="icon-chevron-right"></i> LinuxVirus</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+        <!-- simplecloudos
+        ================================================== -->
+        <section id="simplecloudos">
+          <div class="page-header">
+            <h1>SimpleCloud 开源IaaS软件（进行中）</h1>
+          </div>
+          <p class="lead">开源虚拟化管理软件。</p>
+          <h3>项目简介</h3>
+          <p>使用python重写的SimpleCloud开源版，提供基本的服务器，镜像，模板，虚拟机的管理功能，可用于管理小型虚拟化集群及IaaS相关应用的快速原型开发。</p>
+          <p>现有的开源IaaS，无论openstack，cloudstack都过于复杂，搭小规模虚拟化集群没必要花费大量学习成本，复杂功能也用不到，正是出于这个目的才有的这个小项目。
+          设计力求简单，代码量不大，结构清晰，非常适合快速开发，新功能添加仅需几个小时。</p>
+          <h3>源代码及文档</h3>
+          <ul>
+          <li>源码，开发文档及使用截图: <a href="https://github.com/simplecloud/simplecloud">https://github.com/simplecloud/simplecloud</a>。</li>
+          </ul>
+          <h3>Demo</h3>
+          <ul>
+          <li>SimpleCloud体验平台：<a href="http://118.244.225.182">http://118.244.225.182</a></li>
+          <li>管理员用户名密码admin/000000；普通用户mike/000000，也可随意创建。</li>
+          </ul>
+        </section>
+        
+        <!-- vBackuper
+        ================================================== -->
+        <section id="vbackuper">
+          <div class="page-header">
+            <h1>vBackuper（进行中）</h1>
+          </div>
+          <p class="lead">虚拟机磁盘备份产品。</p>
+
+          <h3>项目简介</h3>
+          <p>vBackuper提供针对虚拟化的备份解决方案。支持对运行状态的虚拟机进行全备份，增量备份。提供对备份数据的去重，压缩，加密等增值功能，增强备份效率的同时，有效保护虚拟机数据的安全。</p>
+          <p>
+          vBackuper当前版本v1.0实现了KVM平台上针对RAW，QCOW2格式虚拟磁盘进行实时增量备份的软件。支持将磁盘备份到NFS，Virtual Disk。部署形式是Virtual Appliance，提供Web UI，命令行， Restful API三种接口。为用户提供管理自己所有任务及虚拟机备份的界面。</p>
+          
+          <h3>功能列表</h3>
+          <h4>核心功能</h4>
+          <ul>
+          <li><strong>动态增量备份与恢复</strong></li>
+          <p>虚拟机运行时备份，无需停机。仅备份用户改变的数据快，实现快速备份。</p>
+          <li><strong>简单易用的Web操作界面</strong></li>
+          <p>仅需要简单的点击一个按钮就可以进行虚拟机备份和恢复。具体可见 <strong>界面截图</strong>。</p>
+          <li><strong>多站点间虚拟机灾备解决方案</strong></li>
+          <p>配置多个vBackuper实例在不同站点，通过vBackuper的合作实现多站点间的虚拟数据中心灾备，迁移和复制。</p>
+          </ul>          
+          <h4>其他功能</h4>
+          <ol>
+          <li><strong>虚拟应用模式，无需额外硬件</strong></li>
+          <p>vBackuper作为一个虚拟机发布，无需hypervisor安装任何代理，易于安装部署。</p>
+          <li><strong>可扩展架构</strong></li>
+          <p>为了避免一个vBackuper成为瓶颈，架构设计为多个vBackuper可以并行执行多个备份任务。</p>
+          <li><strong>多备份存储支持</strong></li>
+          <p>支持备份到NFS，虚拟磁盘，以及其他分布式文件系统。</p>
+          <li><strong>智能备份模式</strong></li>
+          <p>根据当前虚拟机备份状态智能选择全备份或增量备份模式。</p>
+          <li><strong>任务邮件通知</strong></li>
+          <p>可以配置管理员邮箱通知任务状态。</p>
+          <li><strong>支持KVM静止模式</strong></li>
+          <p>对于安装了QEMU-AGENT的虚拟机，支持静止模式保证备份磁盘数据的一致性。</p>
+          <li><strong>多种恢复模式</strong></li>
+          <p>支持从备份重建虚拟机，或者替代虚拟机当前的虚拟磁盘。</p>
+          <li><strong>Restful API</strong></li>
+          <p>提供API接口，易于系统集成</p>
+          <li><strong>支持多种虚拟化平台（开发中）</strong></li>
+          <p>支持KVM，未来会加入Xen，XenServer，VMware平台的支持</p>
+          <li><strong>支持灵活的备份策略（开发中）</strong></li>
+          <p>可配置周期备份以及计划备份任务。</p>
+          <li><strong>块级别的加密去重（开发中）</strong></li>
+          <p>针对数据块进行加密和去重操作，将结果数据传输到备份存储。</p>
+          <li><strong>多物理主机支持（开发中）</strong></li>
+          <p>可以添加多个物理主机，管理其上的虚拟机的备份与恢复。</p>
+          </ol>
+          <h3>界面截图</h3>
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>登录界面</h4>
+          <ul>
+          <li>登录vBackuper虚拟备份管理系统</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/login.png" target="_blank">
+            <img src="assets/img/screenshot/login.png" alt="login">
+            </a>
+          </li>
+          </ul>
+          </div>
+          
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>主面板</h4>
+          <ul>
+          <li>包含备份存储，虚拟机，任务以及备份的信息</li>
+          <li>提供了主要功能的快捷方式</li>
+          <li>展示当前运行的任务状态</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/dashboard.png" target="_blank">
+            <img src="assets/img/screenshot/dashboard.png" alt="dashboard">
+            </a>
+          </li>
+          </ul>
+          </div>
+          
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>系统配置</h4>
+          <ul>
+          <li>配置管理员信息与产品序列号</li>
+          <li>修改备份存储信息（NFS或虚拟磁盘）</li>
+          <li>添加和删除物理服务器</li>
+          <li>设置存储策略</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/config.png" target="_blank">
+            <img src="assets/img/screenshot/config.png" alt="config">
+            </a>
+          </li>
+          </ul>
+          </div>
+          
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>虚拟机备份与恢复管理</h4>
+          <ul>
+          <li>展示所有管理的虚拟机信息</li>
+          <li>提供每个虚拟机的备份与恢复接口</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/vm.png" target="_blank">
+            <img src="assets/img/screenshot/vm.png" alt="vm">
+            </a>
+          </li>
+          </ul>
+          </div>
+
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>任务管理</h4>
+          <ul>
+          <li>任务状态查看</li>
+          <li>任务运行队列管理</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/job.png" target="_blank">
+            <img src="assets/img/screenshot/job.png" alt="job">
+            </a>
+          </li>
+          </ul>
+          </div>
+          
+          <div class="row-fluid">
+          <ul class="thumbnails example-sites">
+          <li class="span5">
+          <h4>备份管理</h4>
+          <ul>
+          <li>备份状态查看</li>
+          <li>由备份恢复虚拟机或创建新虚拟机</li>
+          <li>过期备份删除</li>
+          </ul>
+          </li>
+          <li class="span6">
+            <a class="thumbnail" href="assets/img/screenshot/backup.png" target="_blank">
+            <img src="assets/img/screenshot/backup.png" alt="backup">
+            </a>
+          </li>
+          </ul>
+          </div>
+                    
+          <h3>安装方法</h3>
+          <ol>
+          <li> 部署vBackuper虚拟机到物理服务器上 </li>
+          <li>配置vBackuper虚拟机网络 </li>
+          <li>启动vBackuper虚拟机 </li>
+          <li>登陆http://vBackuper_VM_IP:7775，使用默认密码登入后进行简单配置（管理员邮箱，密码，备份存储）</li>
+          <li>添加需要管理的物理服务器 </li>
+          <li>完成基本配置后即可以查看虚拟机并进行备份和恢复</li>
+          </ol>
+          <h3>研发进度</h3>
+          <p>1.0 Beta版代码开发完成，进入测试阶段</p>
+        </section>
+
+        <!-- SimpleCloud
+        ================================================== -->
+        <section id="simplecloud">
+          <div class="page-header">
+            <h1>SimpleCloud 轻量级云计算平台</h1>
+          </div>
+          <p class="lead">IaaS云计算平台</p>
+          <h3>项目简介</h3>
+          <p>SimpleCloud云计算平台是基于虚拟化的云计算管理软件，为企业IT环境构建私有云，
+          以弹性的方式管理物理资源和虚拟资源，提高服务器利用率，降低IT部署和管理成本。
+          主要的特点是易用（安装，部署和使用），智能，自动化，稳定，安全，易定制集成。
+          同时也具有一般私有云平台的动态性，弹性扩展，基于策略，多虚拟化平台支持等优点，
+          可以在企业普通的硬件及网络环境中构建动态的可扩展的虚拟化云计算平台。
+          国外类似的商业和开源产品很多，例如CloudStack，OpenStack，Eucayptus，Enomaly, OpenNebula, OpenQRM 等，
+          以及Microsoft，HP，IBM，RedHat，VMware等巨头提供的私有云解决方案。
+          </p>
+          <p>SimpleCloud系列产品包括云平台和云应用两大部分，云平台即SimpleCloud云计算平台，云应用包括云安全（SimpleSecurityApp），
+          云迁移（SimpleGoCloud）两个关键应用，计划基于SimpleCloud平台添加更多的IaaS层面的云应用，
+          一些优秀的云应用未来将作为独立的产品发布，用以支持其他的云平台。
+          用户界面方面，目前提供完整的命令行接口SimpleCLI，详细介绍请见<a href="http://blog.sina.com.cn/s/blog_89b3ebee0100u83b.html">SimpleCloud项目介绍</a>。</p>
+          <h3>产品特点</h3>
+          <ul>
+          <li><h4>易用</h4></li>
+          <p><strong>易于部署</strong>：SimpleCloud设计上简化了安装部署以及云环境的使用和管理逻辑，提供更直观的虚拟资源管理方式，
+          绝大部分的云资源的管理都将实现自动化和基于策略的管理。
+          云管理员可以轻松地按照简单的步骤在企业内部部署自己的私有云，终端用户可以按需申请资源，资源对象的组织更接近于实际的物理环境。</p>
+          
+          <p><strong>友好的用户接口</strong>：SimpleCloud提供强大的API并在此之上提供丰富的用户接口，包括远程命令行接口和Web界面。
+          命令行工具可以应用在部署脚本中，进行自动化的云管理。为基于虚拟化平台的云计算环境提供的Web管理界面，
+          目前基于SimpleCloud的python API编写，未来发展目标将会独立出来支持对其他私有云平台甚至公有云的连接。
+          从而为用户管理公有云与私有云资源提供统一的界面和体验模式。</p>
+
+          <li><h4>智能</h4></li>
+          <p><strong>自动化设计</strong>：SimpleCloud的智能体现在更多的自动化设计。首先识别不同的虚拟化平台，并选择为其提供不同的处理模块；
+          其次虚拟机和物理机器同时提供PXE网卡启动的支持，可以直接将裸机加入到私有云环境中并自动检测，安装和启动成一个计算节点，
+          在私有云扩展的过程中，客户需要做的仅仅是告诉云平台新加入的物理机器的网卡MAC；
+          再次，SimpleCloud可以根据客户的硬件环境匹配最优的管理策略，并提供相应的接口供客户调整默认策略。</p>
+          
+          <li><h4>稳定</h4></li>
+          <p><strong>轻量级</strong>：SimpleCloud作为轻量级的私有云环境，一切设计上的考虑都以稳定性为基础。SimpleCloud专为企业私有云以及中小规模的IDC服务提供商设计，单个云平台仅部署中小规模的物理环境中（少于100台主机）。但是，SimpleCloud有计划在发展到一定阶段进行相应的扩展，支持更大规模的云环境部署。</p>
+          <p><strong>模块化</strong>：简化核心部分逻辑，以模块化方式包含云平台部署的关键功能，并且各个模块之间尽量独立，保持稳定性设计的同时为云平台的快速定制提供了基础。</p>
+          <p><strong>插件模式</strong>：平台提供插件模式供新的功能扩展和集成，将可能出现问题的区域隔离到相应的功能插件内，目前SimpleSecurityApp已经以插件的形式集成到SimpleCloud中。</p>
+          
+          <li><h4>安全</h4></li>
+          <p><strong>访问控制</strong>：SimpleCloud内部实现了基于身份的访问控制，提供了两种身份用户：云平台管理员和云平台标准用户。并且内部实现了一个用户权限管理的子系统，也将支持与主流的用户授权框架集成，对所有的API以及资源访问进行严格的访问控制。</p>
+          <p><strong>API安全</strong>：SimpleCloud提供的API 接口支持SSL加密，具有一定安全保证。</p>
+          <p><strong>集成SimpleSecurityApp</strong>集成SimpleSecurityApp：由于与SimpleSecurityApp云安全应用的集成，SimpleCloud具有了为每个虚拟主机提供单独的安全服务例如外围防火墙的功能。目前，SimpleSecurityApp原型仅运行在SimpleCloud，但是设计上完全独立，可以单独出来作为产品集成到其他云平台中。SimpleSecurityApp也被设计成插件框架，可以很容易的为其加入新的安全服务，目前原型中仅仅实现了防火墙安全服务。</p>
+          <li><h4>集成与定制</h4></li>
+          <p><strong>丰富的API</strong>：SimpleCloud提供丰富的API接口，目前版本并不与Amazon EC2兼容，对系统集成友好，系统目前提供支持多种语言的SDK，包括C++，Java，Python，Perl等。提供的API以虚拟资源类型进行组织，更易于用户理解和与业务系统的集成。</p>
+          <p><strong>插件模式</strong>：平台内部提供了插件框架，支持在SimpleCloud内部加入新的功能，为扩展开发提供了便利。</p>
+          </ul>
+          <h3>产品定位</h3>
+          <p>SimpleCloud定位于企业私有云，为企业提供简单，智能，安全，稳定的私有云平台及友好的集成定制接口，搭建企业迈入云计算的桥梁。 在SimpleCloud完全产品化之后，通过部署SimpleCloud私有云环境，企业客户可以获得的价值包括但不限于下列描述：</p>
+          <ul>
+          <li>轻量级的云平台</li>
+          <li>简单的按需部署自服务模式</li>
+          <li>快速的安装和设置</li>
+          <li>模块化和插件框架的系统设计易于定制和集成</li>
+          <li>物理资源的充分利用和整合</li>
+          <li>灵活的弹性虚拟资源管理</li>
+          <li>智能迅速的虚拟环境部署和资源生命周期管理</li>
+          <li>更好的应用程序的备份和数据安全管理</li>
+          <li>安全的支持多种语言的API </li>
+          <li>保证服务的高可用性</li>
+          <li>更低的IT基础设施构建和管理成本</li>
+          <li>提高企业内部IT业务流程的管理效率</li>
+          <li>其他通用私有云环境的优势</li>
+          </ul>
+          
+          <h3>功能列表</h3>
+          <ul>
+          <li>用户管理</li>
+          <li>虚拟机管理</li>
+          <li>物理主机管理</li>
+          <li>虚拟机镜像管理</li>
+          <li>策略管理</li>
+          <li>虚拟机模板管理</li>
+          <li>任务管理</li>
+          <li>系统管理</li>
+          <li>客户端</li>
+          <li>API和集成</li>
+          <li>网络管理</li>
+          <li>存储管理</li>
+          </ul>
+
+          <h3>应用场景</h3>
+          <ul>
+          <li>构建按需部署的，弹性的可扩展的虚拟数据中心</li>
+          <li>VPS和数据中心托管</li>
+          <li>SaaS服务的后端框架和集成</li>
+          <li>PaaS服务的后端框架和集成</li>
+          <li>大数据处理</li>
+          <li>按需处理峰值运算时的工作量</li>
+          <li>开发测试云环境</li>
+          <li>教育环境</li>
+          <li>内部SaaS集成：ERP，CRM，email</li>
+          <li>数据和环境备份</li>
+          <li>为应用提供云数据库后端</li>
+          <li>资源共享和演示</li>
+          <li>物理主机的整合</li>
+          </ul>
+          
+        </section>
+        
+        <!-- vNetworker
+        ================================================== -->
+        <section id="vnetworker">
+          <div class="page-header">
+            <h1>vNetworker</h1>
+          </div>
+          <p class="lead">基于SDN的虚拟网络安全管理软件。</p>
+          <h3>项目简介</h3>
+          <p>
+          该系统目的是构建一个基于OpenFlow的可扩展的云环境安全服务平台。
+          初期目标是IaaS环境下的虚拟网络安全管理，未来有可能扩展到更广泛的安全领域。</p>
+          <p>作为项目发起人，设计软件整体架构，确定技术选型，作为主要程序员负责原型的大部分代码。</p>
+          
+          <h3>功能列表</h3>
+          <ul>
+          <li>虚拟网络安全管理基础平台</li>
+          <p>提供一个安全管理的框架，部署在虚拟化环境里。提供必要的接口供用户定制开发新的虚拟网络安全组件。</p>
+          
+          <li>安全策略动态部署</li>
+          <p>根据网络包的信息按需动态部署安全策略，设定超时后需虚拟交换机再次访问openflow controller才可以获取安全策略。</p>
+          
+          <li>支持虚拟机迁移</li>
+          <p>安全策略绑定虚拟机对象，虚拟机迁移不影响安全策略实施。</p>
+          
+          <li>架构模块化</li>
+          <p>分为Control Center，openflow Controller，vNetworker Agent三个模块，模块间松耦合，以RestFul API进行通信。</p>
+          
+          <li>安全服务插件式</li>
+          <p>基于三个模块中提供的API，支持快速开发新的安全服务的插件架构。无需重启系统即可添加新的安全服务及更新安全策略。</p>
+          
+          <li>支持的安全服务</li>
+          <ol>
+          <li>虚拟机安全组（已完成）</li>
+          <li>虚拟防火墙（已完成）</li>
+          <li>虚拟网络流量分析（开发中）</li>
+          </ol>
+          
+          <li>命令行管理工具</li>
+          <p>提供命令行node-cmd, object-cmd, service-cmd, policy-cmd管理安全服务，安全策略及其保护的目标和载体。</p>
+          </ul>
+          
+          <h3>项目文档（待更新）</h3>
+          <ul>
+          <li>vNetworker v1.0 API 文档</li>
+          <li>vNetworker v1.0 CLI 命令行文档</li>
+          <li>vNetworker v1.0 安全服务开发文档</li>
+          <li>vNetworker v1.0 使用手册</li>
+          <li>vNetworker v1.0 系统设计文档</li>
+          </ul>
+          
+        </section>
+        
+        <!-- ezcloudiaas
+        ================================================== -->
+        <section id="ezcloudiaas">
+          <div class="page-header">
+            <h1>ezCloud IaaS云平台</h1>
+          </div>
+          <p class="lead">基础架构即服务（IaaS）软件。</p>
+          <p>公司核心产品，私有云IaaS平台。提供虚拟机，虚拟网络及虚拟存储的管理。</p>
+          <p>负责研发团队管理，制定研发计划和技术方案，负责私有云产品整体设计及私有云产品后台功能开发。</p>
+        </section>
+
+        <!-- iaasstorage
+        ================================================== -->
+        <section id="iaasstorage">
+          <div class="page-header">
+            <h1>IaaS 云平台存储架构研究</h1>
+          </div>
+          <p class="lead">针对IaaS环境下的不同类型的存储系统进行实验研究。</p>
+          <p>将经验总结参加<a href="http://cloud.51cto.com/exp/WOT_interview/index.html">第一届51CTO云架构师大会</a>，PPT资料见：
+          <a href="http://wot.51cto.com/2012/ppt/day1_01/shilei.pdf" target="_blank">为IaaS平台选择合适的存储架构</a></p>
+        </section>
+
+        <!-- pcivirtual
+        ================================================== -->
+        <section id="pcivirtual">
+          <div class="page-header">
+            <h1>PCI硬件设备虚拟化</h1>
+          </div>
+          <p class="lead">实现多个虚拟机共用同一个PCI设备，并可以快速共享设备处理能力。
+          采用虚拟化保证应用具有很好的隔离性，同时提供动态增减CPU和内存的功能。</p>
+        </section>        
+
+        <!-- sdnnet
+        ================================================== -->
+        <section id="sdnnet">
+          <div class="page-header">
+            <h1>基于OpenFlow/SDN/OpenvSwitch的虚拟网络管理</h1>
+          </div>
+          <p class="lead">基于SDN技术实现IaaS云计算平台上的二层网络隔离，以及流量控制。</p>
+        </section>
+        
+
+
+        <!-- SimpleSecurityApp
+        ================================================== -->
+        <section id="simplesecurityapp">
+          <div class="page-header">
+            <h1>SimpleSecurityApp</h1>
+          </div>
+          <p class="lead">IaaS平台虚拟机安全管理软件。</p>
+          <p>SimpleSecurityApp为云环境提供安全服务，保护云中的应用免受来自网络的攻击。
+          SimpleSecurityApp应用将为每一个虚拟机提供更加灵活的独立防火墙等安全服务，而用户体验仍然与在物理环境中配置安全设备相同。
+          作为一种没有硬件依赖的云安全解决方案，降低了用户保护云资产的成本，灵活的配置也同时提高了安全管理的效率。
+          设计上采用插件模式，提供了更好的扩展性，可以添加或集成新的根据其接口开发的安全应用插件，比如防火墙，IDS，IPS等网络安全服务。</p>
+        </section>
+        
+        <!-- esxclinet
+        ================================================== -->
+        <section id="esxclinet">
+          <div class="page-header">
+            <h1>vSphere ESXCLI network管理模块</h1>
+          </div>
+          <p class="lead">vSphere ESXCLI 命令行架构中的Network管理模块</p>
+          <p>ESXCLI是vSphere新的CLI管理框架，需要将各个组件的管理API都转换成ESXCLI的子模块和子命令。
+          基于vSphere API设计ESXCLI Network API，完成ESXCLI网络管理模块的开发。</p>
+        </section>
+
+        <!-- esxifirewall
+        ================================================== -->
+        <section id="esxifirewall">
+          <div class="page-header">
+            <h1>vSphere ESXi Firewall</h1>
+          </div>
+          <p class="lead">vSphere ESXi 中的无状态防火墙。</p>
+          <p>完成ESXi平台上的面向服务的防火墙的产品设计及vSphere 5.0平台ESXi Firewall产品的管理架构开发与文档。同时实现HostProfile Firewall插件以及ESXi系统升级兼容性相关代码。
+ESX Console中存在基于iptables的防火墙，但是ESXi不存在Console操作系统，在vSphere 5.0之前都没有防火墙对系统进行安全防护，从vSphere 5.0中开始，我们添加了一个类似于ESX Console中的面向服务的防火墙。</p>
+        </section>
+
+        <!-- vdspowercli
+        ================================================== -->
+        <section id="vdspowercli">
+          <div class="page-header">
+            <h1>vDS PowerCLI 管理工具</h1>
+          </div>
+          <p class="lead">VMware PowerCLI 框架下的vDS管理模块。</p>
+        </section>
+        
+        <!-- vnetworkapi
+        ================================================== -->
+        <section id="vnetworkapi">
+          <div class="page-header">
+            <h1>vSphere vNetwork API POC项目</h1>
+          </div>
+          <p class="lead">基于vNetwork API进行虚拟安全软件原型开发。实现防火墙，入侵检测等安全原型。</p>
+        </section>
+
+        
+        <!-- SimpleMonitor
+        ================================================== -->
+        <section id="simplemonitor">
+          <div class="page-header">
+            <h1>SimpleMonitor</h1>
+          </div>
+          <p class="lead">虚拟机监控软件。</p>
+          <p>研究Xen半虚拟化环境下虚拟机进程及文件活动监控，提出虚拟机内进程文件访问行为的动态和静态监控理论方法。
+          基于XenAccess库实现了虚拟机安全监控系统原型。使用Virtual Machine Introspection技术监控虚拟机内部的进程活动以及对文件的访问。</p>
+        </section>       
+
+        <!-- privatestorage
+        ================================================== -->
+        <section id="privatestorage">
+          <div class="page-header">
+            <h1>私有存储云安全研究</h1>
+          </div>
+          <p class="lead">针对当前存储云中的安全问题进行研究，形成报告并实现防范安全问题的原型方案。</p>
+        </section>    
+
+        <!-- cloudsafe
+        ================================================== -->
+        <section id="cloudsafe">
+          <div class="page-header">
+            <h1>基于虚拟架构的云安全体系结构研究</h1>
+          </div>
+          <p class="lead">组织管理3人小组来共同完成前期调研和技术研究工作。</p>
+        </section>    
+
+        <!-- linuxvirus
+        ================================================== -->
+        <section id="linuxvirus">
+          <div class="page-header">
+            <h1>LinuxVirus</h1>
+          </div>
+          <p class="lead">研究ELF文件格式，实现Linux下可感染与传播的病毒原型。</p> 
+        </section>    
+        
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li><a href="./about.html">关于SimpleCloud</a></li>
+          <li class="muted">&middot;</li>
+        </ul>
+        <script src="http://s4.cnzz.com/stat.php?id=5422643&web_id=5422643&show=pic2" language="JavaScript"></script>
+      </div>
+    </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+
+    <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+
+    <script src="assets/js/application.js"></script>
+
+  <script src="assets/js/jquery.scrollUp.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("img.lazy").unveil();
+        
+             $("#start-intro").click(function(){
+                bootstro.start();    
+            });
+
+             $.scrollUp({
+                  scrollName: 'scrollUp', // Element ID
+                  topDistance: '300', // Distance from top before showing element (px)
+                  topSpeed: 300, // Speed back to top (ms)
+                  animation: 'fade', // Fade, slide, none
+                  animationInSpeed: 200, // Animation in speed (ms)
+                  animationOutSpeed: 200, // Animation out speed (ms)
+                  scrollText: '', // Text for element
+                  activeOverlay: false  // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+            });
+          });
+    </script>
+  </body>
+</html>
